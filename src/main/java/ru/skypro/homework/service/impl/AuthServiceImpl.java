@@ -44,4 +44,9 @@ public class AuthServiceImpl implements AuthService {
         return true;
     }
 
+    @Override
+    public boolean checkPasswords(String source, String target) {
+        return encoder.matches(source, target);
+    }
+
 }
