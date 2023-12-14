@@ -28,14 +28,14 @@ public class CommentsController {
     }
 
     @DeleteMapping("/{adId}/comments/{commentId}")
-    @PreAuthorize("hasAuthority('ADMIN') or @commentServiceImpl.existsCommentByIdAndUsername(#commentId, authentication.name)")
+    @PreAuthorize("hasRole('ADMIN') or @commentServiceImpl.existsCommentByIdAndUsername(#commentId, authentication.name)")
     public ResponseEntity<Void> deleteComment(@PathVariable Integer adId, @PathVariable Integer commentId) {
         commentService.deleteComment(commentId, adId);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/{adId}/comments/{commentId}")
-    @PreAuthorize("hasAuthority('ADMIN') or @commentServiceImpl.existsCommentByIdAndUsername(#commentId, authentication.name)")
+    @PreAuthorize("hasRole('ADMIN') or @commentServiceImpl.existsCommentByIdAndUsername(#commentId, authentication.name)")
     public ResponseEntity<CommentDto> updateComment(@PathVariable Integer adId,
                                                     @PathVariable Integer commentId,
                                                     @RequestBody CreateOrUpdateCommentDto dto) {
