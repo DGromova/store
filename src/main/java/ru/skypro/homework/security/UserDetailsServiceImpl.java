@@ -13,6 +13,7 @@ import ru.skypro.homework.dto.Role;
 import ru.skypro.homework.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -31,15 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public List<GrantedAuthority> getAuthorities(Role role) {
-        List<GrantedAuthority> authList = new ArrayList<>();
-        if (role.toString().equals("USER")) {
-            authList.add(new SimpleGrantedAuthority("ROLE_USER"));
-
-        } else if (role.toString().equals("ADMIN")) {
-            authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }
-        System.out.println(authList);
-        return authList;
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
 }
