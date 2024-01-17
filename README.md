@@ -1,4 +1,5 @@
 # Diploma project "Java Developer Course"
+Backend-часть (Spring Boot) для Web-приложения «Доска объявлений»
 
 ## Основной функционал:
 
